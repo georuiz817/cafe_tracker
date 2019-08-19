@@ -10,7 +10,7 @@ class CafeController < ApplicationController
 
     post '/cafes' do
         @cafe = current_user.cafes.create(name: params["name"],location: params["location"],wifi_avaliable: params["wifi_avaliable"])
-        redirect '/cafes'
+        redirect '/'
     end
     
     get '/cafes/:id' do
