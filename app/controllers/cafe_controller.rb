@@ -28,7 +28,7 @@ get '/cafes' do
         @cafe.name = params[:name]
         @cafe.location = params[:location]
         @cafe.wifi_avaliable = params [:wifi_avaliable]
-        @pet.save
+        @cafe.save
         redirect '/cafes'
     end 
 

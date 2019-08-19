@@ -15,5 +15,9 @@
       class="validate" required>
       <input type="submit" id="submit" value="Submit">
     </form>
+    <form action="/cafes/<%= cafe.id %>" method="post">
+                    <input type="hidden" name="_delete" value="delete">
+                    <input type="submit" value="delete">
+                </form>
   </body>
 </html>
