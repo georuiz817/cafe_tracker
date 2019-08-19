@@ -8,16 +8,16 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "secret"
   end
 
- 	get '/' do
+ get "/" do
     erb :home
-  end
-
+ end
+ 
 #Must have user account requirement start
   get '/signup' do
         erb :'/users/signup'
     end
 
-    post '/signup' do
+  post '/signup' do
         user = User.create(params)
         if user.save
             session[:user_id] = user.id
@@ -27,19 +27,20 @@ class ApplicationController < Sinatra::Base
       end
     end
     #
+    
     get '/login' do
         erb :'/users/login'
     end
 
-    post '/login' do
-    user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect '/'
-    else
-      erb :'sessions/login'
+   post '/login' do
+        user = User.find_by(email: params[:email])
+        if user.authenticate(params[:password])
+            session[:user_id] = user.id 
+            redirect '/' #"/users/#{@user.id}"
+        else
+            erb :'users/signup'
+        end
     end
-  end
 
 
 
@@ -51,4 +52,6 @@ class ApplicationController < Sinatra::Base
 
 #must have user account requirement end
 end
+  
+
 
