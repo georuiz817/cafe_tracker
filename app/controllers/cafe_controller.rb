@@ -1,5 +1,5 @@
 class CafeController < ApplicationController
-get '/cafes' do 
+    get '/cafes' do 
         @cafes = current_user.cafes.all
         erb :'cafes/index'
     end 
