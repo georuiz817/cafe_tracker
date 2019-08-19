@@ -9,9 +9,11 @@ class CafeController < ApplicationController
     end
 
     post '/cafes' do
-        @cafe = current_user.cafes.create(name: params["name"],location: params["location"],wifi_avaliable: params["wifi_avaliable"])
-        redirect '/'
-    end
+      @cafe = Cafe.create(params)
+      redirect "/"
+    end 
+
+
     
     get '/cafes/:id' do
         @cafe = Cafe.find_by_id(params[:id])
