@@ -1,3 +1,1 @@
-<% @cafes.each do |cafe| %>
-	<h4><%= cafe.name %>, <%= cafe.location %>, <%= cafe.wifi_avaliable %></h4>
-	<% end %>
+<!DOCTYPE html><html>  <body>    <h1>Cafes</h1>    <% @cafes.each do |cafe| %>      <%= cafe.name %>      <%= cafe.location %>      <%= cafe.wifi_avaliable %>    <% end %>  </body></html>

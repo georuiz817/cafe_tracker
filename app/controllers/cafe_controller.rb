@@ -1,30 +1,32 @@
 class CafeController < ApplicationController
-    get '/cafes' do 
-        @cafes = current_user.cafes.all
-        erb :'cafes/index'
-    end 
+ get '/cafes' do
+    @cafes = Cafe.all
+    erb :index
+  end
 
-    post '/cafes' do
-     @cafe = current_user.cafes.create(name: params["name"],location: params["location"],wifi_avaliable: params["wifi_avaliable"])
-     redirect '/cafes'
-    end 
-
-    get '/cafes/new' do
+     get '/cafes/new' do
         erb :'cafes/new'
     end
 
-    get '/cafes/:id' do
-        @cafe = Cafe.find_by_id(params[:id])
-        erb :'cafes/show'
+    post '/cafes' do
+    @cafe = Cafe.create(params)
+    redirect '/cafes/#{@cafe.id}'
     end 
+   
+
+    get '/cafes/:id' do
+    @cafe = Cafe.find(params[:id])
+    erb :show
+  end 
 
     get '/cafes/:id/edit' do 
-        @cafe = Cafe.find_by_id(params[:id])
-        erb :'cafes/edit'
+        @cafe = Cafe.find(params[:id])
+        erb :edit
     end 
 
-    patch '/cafes/:id' do 
-        @cafe = Cafe.find_by_id(params[:id])
+
+ patch '/cafes/:id' do 
+        @cafe = Cafe.find(params[:id])
         @cafe.name = params[:name]
         @cafe.location = params[:location]
         @cafe.wifi_avaliable = params [:wifi_avaliable]
@@ -33,11 +35,11 @@ class CafeController < ApplicationController
     end 
 
     delete '/cafes/:id' do 
-        @cafe = Cafe.find_by_id(params[:id])
-        @cafe.delete
+        Cafe.destroy(params[:id])
         redirect '/cafes'
     end 
 
     
+
   end 
 

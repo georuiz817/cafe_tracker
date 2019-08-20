@@ -6,17 +6,12 @@
 	<form method="POST" action="/cafes/<%= @cafe.id %>">
 		<input type="hidden" value="patch" name="_method">
 		<label for "name">Name:</label>
-		<input type="text" id="name" value="<%= @cafe.name %>" name="name" class="validate" required>
+		<input type="text" id="name" value="<%= @cafe.name %>" name="name">
 		<label for "location">Location:</label>
-		<input type="text" id="location" value="<% @cafe.location %>" name="location" class="validate" required>
+		<input type="text" id="location" value="<% @cafe.location %>" name="location">
 		<label for "wifi_avaliable">Wifi_Avaliable:</label>
-		<input type="text" id="" value="<% @cafe.wifi_avaliable %>" name="wifi_avaliable" class="validate" required>
+		<input type="text" id="" value="<% @cafe.wifi_avaliable %>" name="wifi_avaliable">
 		<input type="submit" id="submit" value="Submit">
 	</form>
-	<form action="/cafes/<%= cafe.id %>" method="post">
-		<input type="hidden" name="_delete" value="delete">
-		<input type="submit" value="delete">
-	</form>
 </body>
-
 </html>
